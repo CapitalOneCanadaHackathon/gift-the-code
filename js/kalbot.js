@@ -1,35 +1,58 @@
-  window.onload = function() {
-    var map = new Map();
-    //questions array mapped to one button array.
-    //array of strings mapped to an array of buttons
+window.onload = function() {
+  //on first click I sent "What's on your mind?"
+  $(init);
+  function init(){
+    var url = "http://kalbot-api.us-east-1.elasticbeanstalk.com/answer?response=";
+    var query = "What's on your mind?"; //document.getElementById(this.id).
+    $.get(url+query, function(data, status){
+      console.log(data);
+      console.log(data.options);
+      let newButtons = data.options;
+      $("#question-field").text(data.message);
+      for(const index in newButtons){
+        $("#button-"+index).text(newButtons[index].text);
+        $("#button-"+index).data( "link", newButtons[index].link );
+        console.log("link " + index + " --" + newButtons[index].link );
+      }
+    });
+    console.log("*** Init function completed ***");
+  }
 
-    //I'm sad responses
-    map.set("Would you like me to get someone to text you?", ["Sure, text me", "No, I don't want to text", "I don't have access to text"]);
-    map.set("Oh I'm sorry to hear that, how can I help?", ["How can you help?", "You can't help me", "I don't need help"]);
-    map.set("Would you like me to get someone to call you?", ["Sure, call me", "No, I don't want to call", "I don't have access to call"]);
-    //I'm happy responses
-    map.set("That's amazing! What brings you here?", ["I'm here for content!", "I'm here to learn", "I'm here for help"]);
-    map.set("Always nice to see a smiling face, what do you need today?", ["I'm here for content!", "I'm here to learn", "I'm here for help"]);
-    map.set("What fantastic news, what can I do for you?", ["I'm here for content!", "I'm here to learn", "I'm here for help"]);
-    //I'm okay responses
-    map.set("Nice to hear, what do you need?", ["I'm here for content!", "I'm here to learn", "I'm here for help"]);
-    map.set("Well then, whats up?", ["I'm here for content!", "I'm here to learn", "I'm here for help"]);
-    map.set("I'm happy to hear that! What can I do for you?", ["I'm here for content!", "I'm here to learn", "I'm here for help"]);
+  $(document).ready(function(){
+    $("button").click(function(){
+      var url = "http://kalbot-api.us-east-1.elasticbeanstalk.com/answer?response=";
+      var query =  $( "#"+this.id ).data( "link" );
 
 
-      console.log(map["Would you like me to get someone to call you?"]);
-      $(document).ready(function(){
-        $("button").click(function(){
-          var url = "http://kalbot-api.us-east-1.elasticbeanstalk.com/answer?response=";
-          var query = document.getElementById(this.id).textContent;
-          console.log(url+query);
-          $.get(url+query, function(data, status){
-            var newButtons = map.get(data);
-            console.log(data);
-              $("#question-field").text(data);
-            for(const index in newButtons){
-              $("#button-"+index).text(newButtons[index]);
-            }
+      // console.log("SENDING THIS BACK TO REQUEST GET: "+query);
+      // console.log(url+query);
+      if(query === ""|| query === undefined){
+       //what to do if there is no link on the component.     
+      }
+
+      //LOG the recent response in the chat history as a smaller bubble.
+
+      var recentResponse = $( "#"+this.id ).text();
+      var $div = $("<div></div>");;
+      $("#chat-history").append($div);
+      //log the previous question in the chat history as a smaller bubble.
+
+
+      //bring up the next question
+
+      $.get(url+query, function(data, status){
+       // console.log(data);
+        let newButtons = data.options;
+        $("#question-field").text(data.message);
+        for(const index in newButtons){
+          $("#button-"+index).text(newButtons[index].text);
+          $("#button-"+index).data( "link", newButtons[index].link);
+          //console.log("link " + index + " --" + newButtons[index].link);
+        }
+
+        //switch to text - enter phone number, and we send a text
+        //the buttons without links need functionality and what they can do is actually respond to what they are so
+
 
           //console.log("this is the id: " + this.id);
           //console.log(document.getElementById("question-field").innerHTML);
@@ -47,6 +70,6 @@
           //   }
             //alert("Data: " + data + "\nStatus: " + status);
           });
-        });
-      });
-  }
+    });
+  });
+}

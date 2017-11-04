@@ -1,0 +1,26 @@
+.button.cell {
+  background-color: #0095C8;
+  /*border-radius:30px;*/
+}
+
+.question {
+  line-height: 1.25rem;
+  border-radius: 1.25rem;
+  padding:.75rem;
+  text-align:center;
+  /*transition: border-radius .25s ease-out .075s;*/
+  border-top-left-radius: 0;
+  background: rgba(206,206,206,0.50);
+
+}
+/*styles for when the button has not been pressed*/
+.answer.button.fixed {
+  padding:.75rem;
+  text-align:center;
+
+  border-radius: 1.25rem;
+  border-top-right-radius: 0;
+}
+
+
+/*for when the user has selected a button*/

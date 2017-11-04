@@ -6,32 +6,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Foundation for Sites</title>
   <link rel="stylesheet" href="css/foundation.css">
-  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/kalbot.css">
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 </head>
+<style>
+.button.cell {
+  background-color: #0095C8;
+  /*border-radius:30px;*/
+}
+
+.question {
+  line-height: 1.25rem;
+  border-radius: 1.25rem;
+  padding:.75rem;
+  text-align:center;
+  /*transition: border-radius .25s ease-out .075s;*/
+  border-top-left-radius: 0;
+  background: rgba(206,206,206,0.50);
+
+}
+/*styles for when the button has not been pressed*/
+.answer.button.fixed {
+  padding:.75rem;
+  text-align:center;
+
+  border-radius: 1.25rem;
+  border-top-right-radius: 0;
+}
+
+
+/*for when the user has selected a button*/
+
+</style>
 <body>
-    <!-- End Top Bar -->
-    <div class="grid-container">
-      <div class="grid-x grid-padding-x">
-        <div class="large-12 cell">
-          <h1>Hi, it's KAL!</h1>
+  <div class="grid-container">
+    <div class="grid-x grid-padding-x">
+      <div class="large-offset-2 large-12 cell centered">
+        <h1>Hey, it's KAL!</h1>
+        <h5> Welcome to kids help phone<h5>
         </div>
       </div>
 
       <div class="grid-x grid-padding-x">
-        <div class="large-8 medium-8 cell">
-
-          <img class="thumbnail" src="http://placehold.it/850x350">
-          <h5 id="question-field">How are you feeling today?</h5>
-          <!-- Grid Example -->
+        <div class="large-6 large-offset-1 cell">
+          <div class="small-2 large-6">
+          <img class="" src="images/kal_logo.png">
+          <div>
+          <!-- previous answers will be stored here, temporarily -->
+          <!-- answered content -->
+          <div class="chat-history">
+            <p class="question"></p>
+            <p class="response"></p>
+          
+          <!-- this will be the dynamic content fixed on the page  -->
+          <h5 id="question-field" class="question cell">What's on your mind?</h5>
+          <hr/>
+          <button id="button-0" type="button" class="answer button fixed cell">I need help</button>
+          <button id="button-1" type="button" class="answer button fixed cell">I want to play</button>
+          <button id="button-2" type="button" class="answer button fixed cell">I want to learn</button>
         </div>
-        <div class="large-6 large-offset-3 cell">
-          <div class="button-group large">
-            <button id="button-1" type="button" class="button">I'm sad</button>
-            <button id="button-2" type="button" class="button">I'm happy</button>
-            <button id="button-3" type="button" class="button">I'm okay</button>
-          </div>
-        </div>
-        <hr />
       </div>
     </div>
   </div>
@@ -40,10 +73,6 @@
   <script src="js/vendor/what-input.js"></script>
   <script src="js/vendor/foundation.js"></script>
   <script src="js/app.js"></script>
-  <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
   <script src="js/kalbot.js"></script>
 </body>
 </html>
