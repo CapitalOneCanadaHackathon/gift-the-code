@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Foundation for Sites</title>
   <link rel="stylesheet" href="css/foundation.css">
-  <link rel="stylesheet" href="css/kalbot.css">
+  <link rel="stylesheet" href="css/app.css">
   <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 </head>
 <style>
@@ -29,50 +29,82 @@
 .answer.button.fixed {
   padding:.75rem;
   text-align:center;
-
   border-radius: 1.25rem;
-  border-top-right-radius: 0;
+  /*//border-top-right-radius: 0;*/
+
 }
 
+/*decrease size of archived bubbles here!*/
+.answer.archived {
+  padding:.75rem;
+  text-align:center;
+  border-radius: 1.25rem;
+  border-top-right-radius: 0;
+  background-color: #0095C8;
+}
 
+.question.archived {
+  line-height: 1.25rem;
+  border-radius: 1.25rem;
+  padding:.75rem;
+  text-align:center;
+  /*transition: border-radius .25s ease-out .075s;*/
+  border-top-left-radius: 0;
+  background: rgba(206,206,206,0.50);
+}
 /*for when the user has selected a button*/
-
+.chat-history{
+  background-color:#cacaca;
+  max-height:20%;
+  height:250px;
+  overflow-y: scroll;
+} 
+.chat-history-mobile{
+  background-color:#cacaca;
+} 
 </style>
 <body>
+  <!-- End Top Bar -->
   <div class="grid-container">
-    <div class="grid-x grid-padding-x">
-      <div class="large-offset-2 large-12 cell centered">
-        <h1>Hey, it's KAL!</h1>
-        <h5> Welcome to kids help phone<h5>
+    <div class="grid-y">
+      <div></div>
+      <div>
+        <div class="grid-x grid-padding-x">
+          <div class="large-offset-2 large-12 cell centered">
+            <h1>Hey, it's KAL!</h1>
+            <h5> Welcome to kids help phone<h5>
+            </div>
+          </div>
+
+          <div class="grid-x grid-padding-x align-middle">
+            <div class="large-3 large-offset-1 cell">
+              <div class="small-2 large-6">
+                <img class="" src="images/kal_logo.png">
+              </div>
+            </div>
+            <div id="chat-history" class="large-3 chat-history cell">
+              <!-- previous answers will be stored here, temporarily -->
+              <div class="hide small-offset-2 large-offset-5">
+              </div>
+            </div>
+            <div class="large-6 large-offset-1 cell">
+              <hr/>
+
+              <!-- this will be the dynamic content fixed on the page  -->
+              <h5 id="question-field" class="question cell">What's on your mind?</h5>
+              <hr/>
+              <button id="button-0" type="button" class="answer button fixed cell">I need help</button>
+              <button id="button-1" type="button" class="answer button fixed cell">I want to play</button>
+              <button id="button-2" type="button" class="answer button fixed cell">I want to learn</button>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="grid-x grid-padding-x">
-        <div class="large-6 large-offset-1 cell">
-          <div class="small-2 large-6">
-          <img class="" src="images/kal_logo.png">
-          <div>
-          <!-- previous answers will be stored here, temporarily -->
-          <!-- answered content -->
-          <div class="chat-history">
-            <p class="question"></p>
-            <p class="response"></p>
-          
-          <!-- this will be the dynamic content fixed on the page  -->
-          <h5 id="question-field" class="question cell">What's on your mind?</h5>
-          <hr/>
-          <button id="button-0" type="button" class="answer button fixed cell">I need help</button>
-          <button id="button-1" type="button" class="answer button fixed cell">I want to play</button>
-          <button id="button-2" type="button" class="answer button fixed cell">I want to learn</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script src="js/vendor/jquery.js"></script>
-  <script src="js/vendor/what-input.js"></script>
-  <script src="js/vendor/foundation.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/kalbot.js"></script>
-</body>
-</html>
+      <script src="js/vendor/jquery.js"></script>
+      <script src="js/vendor/what-input.js"></script>
+      <script src="js/vendor/foundation.js"></script>
+      <script src="js/app.js"></script>
+      <script src="js/kalbot.js"></script>
+    </body>
+    </html>
