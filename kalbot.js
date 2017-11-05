@@ -109,3 +109,4 @@ window.onload = function() {
 TODO
 - default text in the gray box or put the message in the actual textbox.
 - read links with https and if they have it then send the user to the new page. --huge selling point -- drive directly to content
+*/
