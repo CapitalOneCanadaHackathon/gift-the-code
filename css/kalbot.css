@@ -1,14 +1,14 @@
+
 .button.cell {
   background-color: #0095C8;
   /*border-radius:30px;*/
 }
 
-.question {
+.question {  
   line-height: 1.25rem;
   border-radius: 1.25rem;
   padding:.75rem;
   text-align:center;
-  /*transition: border-radius .25s ease-out .075s;*/
   border-top-left-radius: 0;
   background: rgba(206,206,206,0.50);
 
@@ -17,10 +17,36 @@
 .answer.button.fixed {
   padding:.75rem;
   text-align:center;
-
   border-radius: 1.25rem;
   border-top-right-radius: 0;
+
 }
 
+/*decrease size of archived bubbles here!*/
+.answer.archived {
+  padding:.75rem;
+  text-align:center;
+  border-radius: 1.25rem;
+  border-top-right-radius: 0;
+  background-color: #0095C8;
+}
 
+.question.archived {
+  line-height: 1.25rem;
+  border-radius: 1.25rem;
+  padding:.75rem;
+  text-align:center;
+  /*transition: border-radius .25s ease-out .075s;*/
+  border-top-left-radius: 0;
+  background: rgba(206,206,206,0.50);
+}
 /*for when the user has selected a button*/
+.chat-history{
+  background-color:#cacaca;
+  max-height:20%;
+  height:250px;
+  overflow-y: scroll;
+} 
+.chat-history-mobile{
+  background-color:#cacaca;
+} 

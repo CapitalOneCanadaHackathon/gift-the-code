@@ -82,8 +82,8 @@ window.onload = function() {
             $("#button-0").data( "link", "What's on your mind?");   
             $("#button-0").toggleClass("hide");
             $("#button-1").text("Continue to www.kidshelphone.ca");
-            $("#button-2").data( "link", "What's on your mind?");   
-            $("#button-3").toggleClass("hide");
+            $("#button-1").data( "link", "What's on your mind?");   
+            $("#button-1").toggleClass("hide");
           }
         }
         // else if(newButtons[index].link ==="") {
