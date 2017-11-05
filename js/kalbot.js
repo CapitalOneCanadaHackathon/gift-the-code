@@ -7,13 +7,13 @@ window.onload = function() {
             // if larger or equal
             $('#chat-history').addClass("chat-history");
             $('#chat-history').removeClass("chat-history-mobile");
-        } else {
+          } else {
             // if smaller
             $('#chat-history').removeClass("chat-history");
             $('#chat-history').addClass("chat-history-mobile");
 
-        }
-    }).resize();
+          }
+        }).resize();
 
   $(init);
   function init(){
@@ -37,7 +37,6 @@ window.onload = function() {
     document.getElementById("chat-history").scrollTop = document.getElementById("chat-history").scrollHeight;
     //document.getElementById("chat-history-mobile").scrollTop = document.getElementById("chat-history-mobile").scrollHeight;
     $('html, body').scrollTop( $('body').height() );
-    console.log("------------------------------------ " + document.height());
   }
   $(document).ready(function(){
     $("button").click(function(){
@@ -61,23 +60,44 @@ window.onload = function() {
       console.log($divResponse);
       $("#chat-history").append($divResponse);
 
-      updateScroll(); 
       //bring up the next question
-
-      //only make a button and display it when the text field has content
-      //if the text is blank don't display the button
-      //if the link is blank dont look anything up
       //if both are empty then display the message - send whats on your mind?
       $.get(url+query, function(data, status){
-       // console.log(data);
+       console.log("THIS SHOULD BE EMPTY" + data.options);
        let newButtons = data.options;
        $("#question-field").text(data.message);
+       let tempCounter = data.options.length;
+
        for(const index in newButtons){
-        $("#button-"+index).text(newButtons[index].text);
-        $("#button-"+index).data( "link", newButtons[index].link);
-          //console.log("link " + index + " --" + newButtons[index].link);
+
+      //only make a button and display it when the text field has content
+        if(newButtons[index].text === ""){
+          //show talk about something else button.
+          $("#button-"+index).toggleClass("hide");
+          tempCounter -=1;
+          console.log(tempCounter + " COUNTER");
+          if(tempCounter <= 0){
+            //there's no buttons so display the default button and add a link to it 
+            $("#button-0").text("Would you like to start the conversation again?");
+            $("#button-0").data( "link", "What's on your mind?");   
+            $("#button-0").toggleClass("hide");
+            $("#button-1").text("Continue to www.kidshelphone.ca");
+            $("#button-2").data( "link", "What's on your mind?");   
+            $("#button-3").toggleClass("hide");
+          }
         }
-      });
+        // else if(newButtons[index].link ==="") {
+        //   console.log("*********************fuck yo mama");
+        // } 
+        else {
+          $("#button-"+index).removeClass("hide");
+          $("#button-"+index).text(newButtons[index].text);
+          $("#button-"+index).data( "link", newButtons[index].link);        
+          //console.log("link " + index + " --" + newButtons[index].link);
+      updateScroll(); 
+        }
+      }
+    });
     });
 
   });
