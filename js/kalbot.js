@@ -48,15 +48,15 @@ window.onload = function() {
 
       if(query === ""|| query === undefined){
        //what to do if there is no link on the component.
-     }
+      }
       //log the previous question in the chat history as a smaller bubble.
       var prevQuestion = $( "#question-field" ).text();
-      var $divQuestion = $("<h5 class='question cell'>" + prevQuestion + "</h5>");
+      var $divQuestion = $("<p class='question cell'>" + prevQuestion + "</p>");
       $("#chat-history").append($divQuestion);
 
       //log the recent response in the chat history as a smaller bubble.
       var prevResponse = $( "#"+this.id ).text();
-      var $divResponse = $("<h5 class='answer archived cell'>"+prevResponse + "</h5>");
+      var $divResponse = $("<p class='answer archived cell'>"+prevResponse + "</p>");
       console.log($divResponse);
       $("#chat-history").append($divResponse);
 
@@ -65,17 +65,33 @@ window.onload = function() {
       $.get(url+query, function(data, status){
        console.log("THIS SHOULD BE EMPTY" + data.options);
        let newButtons = data.options;
-       $("#question-field").text(data.message);
+       let message = data.message;
+       let urlKeywords = "http"; //every string with http
+      //after noticing the text leaves are empty, we verify the message isn't a link
+        if(message.includes(urlKeywords)){
+          var win = window.open(message, '_blank');
+          if (win) {
+              //Browser has allowed it to be opened
+              win.focus();
+          } else {
+              //Browser has blocked it
+              alert('Please allow popups for this website');
+          }
+          //message = "<a href='"+message+"' target='_blank'>"+message+"</a>";
+          //console.log("********* THIS IS A FUCKING URL" + message);
+
+        }
+       $("#question-field").text(message);
        let tempCounter = data.options.length;
 
        for(const index in newButtons){
-
-      //only make a button and display it when the text field has content
-        if(newButtons[index].text === ""){
+         //only make a button and display it when the text field has content
+         if(newButtons[index].text === "" || newButtons[index].text === undefined){
           //show talk about something else button.
           $("#button-"+index).toggleClass("hide");
           tempCounter -=1;
           console.log(tempCounter + " COUNTER");
+
           if(tempCounter <= 0){
             //there's no buttons so display the default button and add a link to it 
             $("#button-0").text("Would you like to start the conversation again?");
@@ -87,19 +103,27 @@ window.onload = function() {
           }
         }
         // else if(newButtons[index].link ==="") {
-        //   console.log("*********************fuck yo mama");
+        //   console.log("******************** link is empty");
         // } 
         else {
           $("#button-"+index).removeClass("hide");
           $("#button-"+index).text(newButtons[index].text);
           $("#button-"+index).data( "link", newButtons[index].link);        
           //console.log("link " + index + " --" + newButtons[index].link);
-      updateScroll(); 
+          updateScroll(); 
         }
       }
     });
     });
+//if link contains https then send to that link
 
   });
 
 }
+
+
+/***********************
+TODO
+- default text in the gray box or put the message in the actual textbox.
+- read links with https and if they have it then send the user to the new page. --huge selling point -- drive directly to content
+*/
