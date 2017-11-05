@@ -1,8 +1,6 @@
-message	options.0.text	options.0.link	options.1.text	options.1.link	options.2.text	options.2.link
-What's on your mind?	I need help	How can I help you?	I want to play!	Can I help you choose a game?	I want to learn.	Can I help you find an article?
-How can I help you?	Text councillor	link to chat line	Call you	link to enter your phone number	Letter builder	link to letter builder
-Can I help you choose a game?	Worry rockets	link to game	Vent it: baseball	link to game		
-Can I help you find an article?	Search our site	link to front page search bar	I need to help another person	link to something regarding this	Common issues	Common issues
-Common issues	Suicide help line	link to suicide help line	Bullying	link to bullying resources	Abuse	link to abuse resources
-						
-TEXT YOU AS OPTION						
+message,options.0.text,options.0.link,options.1.text,options.1.link,options.2.text,options.2.link
+What's on your mind?,I need help.,How can I help you?,I want to play!,Can I help you choose a game?,I want to learn.,Can I help you find and article?
+How can I help you?,Text councillor,link to chat line,Call you,link to enter phone number,Letter builder,link to letter builder
+Can I help you choose a game?,Worry rockets,link to game,Vent it: Baseball,link to game,,
+Can I help you find an article?,Search our site,link to front page search bar,I need to help someone else,link to article,Common issues,Common issues
+Common issues,Suicide help line,link to suicide help line,Bullying,link to bullying resources,Abuse,link to abuse resources
