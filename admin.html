@@ -1,0 +1,58 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <title>LE TITLE!!! </title>
+  </head>
+
+  <style>
+  </style>
+
+  <body>
+   <!--  <input id="csv-file" type="file" /> -->
+   <!--  <button id="send">Send</button> -->
+
+    <!-- <script src="js/vendor/jquery.js"></script>
+    <script type="text/javascript"> -->
+      <!-- console.log("HERE"); -->
+      //<!-- $("#send").click(sendData(document.getElementById("csv-file").value));
+
+// //      $("#send").click(sendData(document.getElementById("csv-file").value));
+//       console.log("NOW IM FRIGKEN HERE: " + document.getElementById("csv-file").value);
+
+//       function sendData(data) {
+//       var XHR = new XMLHttpRequest();
+//       var FD  = new FormData();
+//       console.log(XHR + "-- this is XHR");
+
+//       // Push our data into our FormData object
+//       for(name in data) {
+//        FD.append(name, data[name]);
+//       }
+
+//       // Set up our request
+//       XHR.open('POST', 'http://kalbot-api.us-east-1.elasticbeanstalk.com/conversations/set');
+// console.log('post sent!!');
+//       // Send our FormData object; HTTP headers are set automatically
+//       XHR.send(FD);
+// console.log('post sent!!');
+
+//       } -->
+
+
+<!-- // var data = new FormData();
+// $("#send").click(jQuery.each("document.getElementById('csv-file').value", function(i, file) {
+//    data.append('file-'+i, file);
+// })); -->
+<form method="POST" action="http://kalbot-api.us-east-1.elasticbeanstalk.com/conversations/set" enctype="multipart/form-data">
+   <input type="file" name="file" /><br/><br/>
+   <input type="submit" value="Submit" />
+</form>
+
+    <!-- </script> --> <!-- might need this to be triggered by an event? Idk if it would automagically post after the image is uploaded. NOTE: callback (3rd entry) is not necessary, so do I remove the last comma or leave it null? -->
+    <!--$("#send").click(function(){
+        $.post("http://kalbot-api.us-east-1.elasticbeanstalk.com/conversations/set", document.getElementById("csv-file").value);
+      }) -->
+
+  </body>
+
+</html>
