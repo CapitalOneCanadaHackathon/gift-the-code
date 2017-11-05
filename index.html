@@ -4,38 +4,41 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Foundation for Sites</title>
+  <title>KAL | KHP </title>
   <link rel="stylesheet" href="css/foundation.css">
-
   <link rel="stylesheet" href="css/kalbot.css">
-  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round|Fredoka+One" rel="stylesheet">
 </head>
+<style>
+.header-background {
+  background-color:rgba(78, 142, 244, 0.5);
+}
+</style>
 <body>
   <!-- End Top Bar -->
   <div class="grid-container">
     <div class="grid-y">
       <div></div>
       <div>
-        <div class="grid-x grid-padding-x">
-          <div class="large-offset-2 large-12 cell centered">
+        <div class="grid-x grid-padding-x header-background">
+          <div class="small-6 large-offset-3 large-4 cell centered">
             <h1>Hey, it's KAL!</h1>
             <h5> Welcome to kids help phone<h5>
+            </div>
+            <div class="small-6 large-2">
+              <img class="" src="images/kal_logo.png">
             </div>
           </div>
 
           <div class="grid-x grid-padding-x align-middle">
-            <div class="large-3 large-offset-1 cell">
-              <div class="small-2 large-6">
-                <img class="" src="images/kal_logo.png">
-              </div>
-            </div>
-            <div id="chat-history" class="large-3 chat-history cell">
+            <div id="chat-history" class="large-3 large-offset-4 chat-history cell">
               <!-- previous answers will be stored here, temporarily -->
+
               <div class="hide small-offset-2 large-offset-5">
+                <hr/>
               </div>
             </div>
-            <div class="large-6 large-offset-1 cell">
-              <hr/>
+            <div class="large-3 large-offset-4 cell">
 
               <!-- this will be the dynamic content fixed on the page  -->
               <h5 id="question-field" class="question cell">What's on your mind?</h5>
