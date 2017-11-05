@@ -2,18 +2,18 @@ window.onload = function() {
   //on first click I sent "What's on your mind?"
 
   $(window).resize(function() {
-        // This will fire each time the window is resized:
-        if($(window).width() >= 800) {
-            // if larger or equal
-            $('#chat-history').addClass("chat-history");
-            $('#chat-history').removeClass("chat-history-mobile");
-          } else {
-            // if smaller
-            $('#chat-history').removeClass("chat-history");
-            $('#chat-history').addClass("chat-history-mobile");
+    // This will fire each time the window is resized:
+    if($(window).width() >= 800) {
+        // if larger or equal
+        $('#chat-history').addClass("chat-history");
+        $('#chat-history').removeClass("chat-history-mobile");
+      } else {
+        // if smaller
+        $('#chat-history').removeClass("chat-history");
+        $('#chat-history').addClass("chat-history-mobile");
 
-          }
-        }).resize();
+    }
+  }).resize();
 
   $(init);
   function init(){
@@ -46,12 +46,9 @@ window.onload = function() {
       // console.log("SENDING THIS BACK TO REQUEST GET: "+query);
       // console.log(url+query);
 
-      if(query === ""|| query === undefined){
-       //what to do if there is no link on the component.
-      }
       //log the previous question in the chat history as a smaller bubble.
       var prevQuestion = $( "#question-field" ).text();
-      var $divQuestion = $("<p class='question cell'>" + prevQuestion + "</p>");
+      var $divQuestion = $("<p class='question archived'>" + prevQuestion + "</p>");
       $("#chat-history").append($divQuestion);
 
       //log the recent response in the chat history as a smaller bubble.
@@ -94,12 +91,12 @@ window.onload = function() {
 
           if(tempCounter <= 0){
             //there's no buttons so display the default button and add a link to it 
-            $("#button-0").text("Would you like to start the conversation again?");
+            $("#button-0").text("I want to start a new conversation.");
             $("#button-0").data( "link", "What's on your mind?");   
             $("#button-0").toggleClass("hide");
-            $("#button-1").text("Continue to www.kidshelphone.ca");
-            $("#button-1").data( "link", "What's on your mind?");   
-            $("#button-1").toggleClass("hide");
+       //     $("#button-1").text("Continue to Kids Help Phone Website!");
+        //    $("#button-1").data( "link", "https://www.kidshelphone.ca");   
+        //    $("#button-1").toggleClass("hide");
           }
         }
         // else if(newButtons[index].link ==="") {
